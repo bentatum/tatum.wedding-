@@ -1,0 +1,302 @@
+@import url('https://unpkg.com/vue2-animate/dist/vue2-animate.min.css');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700|Material+Icons');
+
+/**
+ * Class Semantics
+ * .cl-{block}
+ * .cl-{block}--{modifier}
+ * .cl-{block}--{modifier}__{element}--{modifier}...
+ * .cl-{block}__{element}--{modifier}__{element}--{modifier}...
+ *
+ * Variable Semantics
+ * --cl-{block}
+ * --cl-{block}--{modifier}
+ * --cl-{block}--{modifier}__{element}--{modifier}...
+ * --cl-{block}__{element}--{modifier}__{element}--{modifier}...
+ *
+ * Further reading: http://getbem.com/
+ */
+
+ /* Base Theme */
+:root {
+  /* Breakpoints */
+  --cl-breakpoints--xs: 320px;
+  --cl-breakpoints--sm: 768px;
+  --cl-breakpoints--md: 1024px;
+  --cl-breakpoints--lg: 1440px;
+  --cl-breakpoints--xl: 2560px;
+
+  /* Spacing */
+  --cl-space: 10px;
+  --cl-space--xs: calc(var(--cl-space) / 4);
+  --cl-space--sm: calc(var(--cl-space) / 2);
+  --cl-space--md: 10px;
+  --cl-space--lg: calc(var(--cl-space) * 2);
+  --cl-space--xl: calc(var(--cl-space) * 4);
+  --cl-space__gutter: var(--cl-space--lg);
+
+  /* Typography */
+  --cl-font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  --cl-font-weight--light: 300;
+  --cl-font-weight--medium: 400;
+  --cl-font-weight--heavy: 700;
+  --cl-font-weight: var(--cl-font-weight--medium);
+
+  /* Color Palettes */
+  /* Grey */
+  --cl-color--grey-1: #fafafa;
+  --cl-color--grey-2: #f5f5f5;
+  --cl-color--grey-3: #eeeeee;
+  --cl-color--grey-4: #e0e0e0;
+  --cl-color--grey-5: #bdbdbd;
+  --cl-color--grey-6: #9e9e9e;
+  --cl-color--grey-7: #757575;
+  --cl-color--grey-8: #616161;
+  --cl-color--grey-9: #424242;
+  --cl-color--grey-10: #212121;
+  --cl-color--grey: var(--cl-color--grey-5);
+  --cl-color--grey-light: var(--cl-color--grey-4);
+  --cl-color--grey-dark: var(--cl-color--grey-6);
+  --cl-color--grey-contrast-text: var(--cl-color--grey-8);
+  --cl-color--grey-r: 175;
+  --cl-color--grey-g: 175;
+  --cl-color--grey-b: 175;
+
+  /* Primary */
+  --cl-color--primary-1: #a9a5ec;
+  --cl-color--primary-2: #9a95e8;
+  --cl-color--primary-3: #8b84e5;
+  --cl-color--primary-4: #7b74e1;
+  --cl-color--primary-5: #6c64de;
+  --cl-color--primary-6: #5d54db;
+  --cl-color--primary-7: #4d44d7;
+  --cl-color--primary-8: #3e33d4;
+  --cl-color--primary-9: #352bc9;
+  --cl-color--primary-10: #3127b9;
+  --cl-color--primary-ALT1: #F9FAFF;
+  --cl-color--primary-ALT8: #1D233D;
+  --cl-color--primary-ALT10: #0E1024;
+  --cl-color--primary: var(--cl-color--primary-5);
+  --cl-color--primary-light: var(--cl-color--primary-3);
+  --cl-color--primary-dark: var(--cl-color--primary-7);
+  --cl-color--primary-contrast-text: var(--cl-color__common--white);
+  --cl-color--primary-r: 138;
+  --cl-color--primary-g: 101;
+  --cl-color--primary-b: 222;
+
+  /* Secondary */
+  --cl-color--secondary-1: #e89e9a;
+  --cl-color--secondary-2: #e58e8a;
+  --cl-color--secondary-3: #e17f7a;
+  --cl-color--secondary-4: #de6f6a;
+  --cl-color--secondary-5: #da605a;
+  --cl-color--secondary-6: #d6514a;
+  --cl-color--secondary-7: #d3413a;
+  --cl-color--secondary-8: #cc352e;
+  --cl-color--secondary-9: #bb312a;
+  --cl-color--secondary-10: #ab2d26;
+  --cl-color--secondary: var(--cl-color--secondary-5);
+  --cl-color--secondary-light: var(--cl-color--secondary-3);
+  --cl-color--secondary-dark: var(--cl-color--secondary-7);
+  --cl-color--secondary-contrast-text: var(--cl-color__common--white);
+  --cl-color--secondary-r: 218;
+  --cl-color--secondary-g: 96;
+  --cl-color--secondary-b: 90;
+
+  /* Success */
+  --cl-color--success-1: #5af7d8;
+  --cl-color--success-2: #47f7d3;
+  --cl-color--success-3: #35f6cf;
+  --cl-color--success-4: #22f5ca;
+  --cl-color--success-5: #0ff4c6;
+  --cl-color--success-6: #0ae5b9;
+  --cl-color--success-7: #0ad2aa;
+  --cl-color--success-8: #09bf9b;
+  --cl-color--success-9: #08ad8c;
+  --cl-color--success-10: #079a7c;
+  --cl-color--success: var(--cl-color--success-5);
+  --cl-color--success-light: var(--cl-color--success-3);
+  --cl-color--success-dark: var(--cl-color--success-7);
+  --cl-color--success-contrast-text: var(--cl-color__common--white);
+  --cl-color--success-r: 15;
+  --cl-color--success-g: 244;
+  --cl-color--success-b: 198;
+
+  /* Error */
+  --cl-color--error-1: #ff3e6b;
+  --cl-color--error-2: #ff2a5c;
+  --cl-color--error-3: #ff174d;
+  --cl-color--error-4: #ff033e;
+  --cl-color--error-5: #ee0038;
+  --cl-color--error-6: #db0033;
+  --cl-color--error-7: #c7002f;
+  --cl-color--error-8: #b4002a;
+  --cl-color--error-9: #a00025;
+  --cl-color--error-10: #8c0021;
+  --cl-color--error: var(--cl-color--error-5);
+  --cl-color--error-light: var(--cl-color--error-3);
+  --cl-color--error-dark: var(--cl-color--error-7);
+  --cl-color--error-contrast-text: var(--cl-color__common--white);
+  --cl-color--error-r: 238;
+  --cl-color--error-g: 0;
+  --cl-color--error-b: 56;
+
+  /* Action Colors */
+  --cl-color__action--active: rgba(0, 0, 0, 0.54);
+  --cl-color__action--disabled: rgba(0, 0, 0, 0.26);
+  --cl-color__action--disabled-background: rgba(0, 0, 0, 0.12);
+  --cl-color__action--hover: rgba(0, 0, 0, 0.08);
+  --cl-color__action--hover-opacity: 0.275;
+  --cl-color__action--selected: rgba(0, 0, 0, 0.14);
+
+  /* Background Colors */
+  --cl-color__background--paper: #fff;
+
+  /* Common Colors */
+  --cl-color__common--white: #fff;
+  --cl-color__common--black: #000;
+
+  /* Font Colors */
+  --cl-color__text--primary: rgba(0, 0, 0, 0.87); /* The most important text. */
+  --cl-color__text--secondary: rgba(0, 0, 0, 0.54); /* Secondary text. */
+  --cl-color__text--disabled: rgba(0, 0, 0, 0.38); /* Disabled text have even lower visual prominence. */
+  --cl-color__text--hint: rgba(0, 0, 0, 0.38); /* Text hints */
+  --cl-color--text-color: --cl-color__text--primary; /* Shortcut */
+
+  /* Borders */
+  --cl-border-width: 1px;
+  --cl-border-style: solid;
+  --cl-border-color: var(--cl-color--grey);
+  --cl-border-radius: 4px;
+  --cl-border-radius--sm: 2px;
+  --cl-border-radius--lg: 8px;
+  --cl-border-radius--xl: 16px;
+  --cl-border: var(--cl-border-width) var(--cl-border-style) var(--cl-border-color);
+
+  /* Shadow Settings */
+  --cl-shadow--umbra-r: 0;
+  --cl-shadow--umbra-g: 0;
+  --cl-shadow--umbra-b: 0;
+  --cl-shadow--umbra-opacity: 0.1;
+  --cl-shadow--umbra: rgba(
+    var(--cl-shadow--umbra-r),
+    var(--cl-shadow--umbra-g),
+    var(--cl-shadow--umbra-b),
+    var(--cl-shadow--umbra-opacity)
+  );
+
+  --cl-shadow--penumbra-r: 0;
+  --cl-shadow--penumbra-g: 0;
+  --cl-shadow--penumbra-b: 0;
+  --cl-shadow--penumbra-opacity: 0.1;
+  --cl-shadow--penumbra: rgba(
+    var(--cl-shadow--penumbra-r),
+    var(--cl-shadow--penumbra-g),
+    var(--cl-shadow--penumbra-b),
+    var(--cl-shadow--penumbra-opacity)
+  );
+
+  --cl-shadow--ambient-r: 0;
+  --cl-shadow--ambient-g: 0;
+  --cl-shadow--ambient-b: 0;
+  --cl-shadow--ambient-opacity: 0.05;
+  --cl-shadow--ambient: rgba(
+    var(--cl-shadow--ambient-r),
+    var(--cl-shadow--ambient-g),
+    var(--cl-shadow--ambient-b),
+    var(--cl-shadow--ambient-opacity)
+  );
+
+  /* Shadow Palette */
+  --cl-shadow--0: none;
+  --cl-shadow--1: 0 1px 3px 0 var(--cl-shadow--umbra),
+                  0 1px 1px 0 var(--cl-shadow--penumbra),
+                  0 2px 1px -1px var(--cl-shadow--ambient);
+  --cl-shadow--2: 0 1px 5px 0 var(--cl-shadow--umbra),
+                  0 2px 2px 0 var(--cl-shadow--penumbra),
+                  0 3px 1px -2px var(--cl-shadow--ambient);
+  --cl-shadow--3: 0 1px 8px 0 var(--cl-shadow--umbra),
+                  0 3px 4px 0 var(--cl-shadow--penumbra),
+                  0 3px 3px -2px var(--cl-shadow--ambient);
+  --cl-shadow--4: 0 2px 4px -1px var(--cl-shadow--umbra),
+                  0 4px 5px 0 var(--cl-shadow--penumbra),
+                  0 1px 10px 0 var(--cl-shadow--ambient);
+  --cl-shadow--5: 0 3px 5px -1px var(--cl-shadow--umbra),
+                  0 5px 8px 0 var(--cl-shadow--penumbra),
+                  0 1px 14px 0 var(--cl-shadow--ambient);
+  --cl-shadow--6: 0 3px 5px -1px var(--cl-shadow--umbra),
+                  0 6px 10px 0 var(--cl-shadow--penumbra),
+                  0 1px 18px 0 var(--cl-shadow--ambient);
+  --cl-shadow--7: 0 4px 5px -2px var(--cl-shadow--umbra),
+                  0 7px 10px 1px var(--cl-shadow--penumbra),
+                  0 2px 16px 1px var(--cl-shadow--ambient);
+  --cl-shadow--8: 0 5px 5px -3px var(--cl-shadow--umbra),
+                  0 8px 10px 1px var(--cl-shadow--penumbra),
+                  0 3px 14px 2px var(--cl-shadow--ambient);
+  --cl-shadow--9: 0 5px 6px -3px var(--cl-shadow--umbra),
+                  0 9px 12px 1px var(--cl-shadow--penumbra),
+                  0 3px 16px 2px var(--cl-shadow--ambient);
+  --cl-shadow--10: 0 6px 6px -3px var(--cl-shadow--umbra),
+                  0 10px 14px 1px var(--cl-shadow--penumbra),
+                  0 4px 18px 3px var(--cl-shadow--ambient);
+  --cl-shadow--11: 0 6px 7px -4px var(--cl-shadow--umbra),
+                  0 11px 15px 1px var(--cl-shadow--penumbra),
+                  0 4px 20px 3px var(--cl-shadow--ambient);
+  --cl-shadow--12: 0 7px 8px -4px var(--cl-shadow--umbra),
+                  0 12px 17px 2px var(--cl-shadow--penumbra),
+                  0 5px 22px 4px var(--cl-shadow--ambient);
+  --cl-shadow--13: 0 7px 8px -4px var(--cl-shadow--umbra),
+                  0 13px 19px 2px var(--cl-shadow--penumbra),
+                  0 5px 24px 4px var(--cl-shadow--ambient);
+  --cl-shadow--14: 0 7px 9px -4px var(--cl-shadow--umbra),
+                  0 14px 21px 2px var(--cl-shadow--penumbra),
+                  0 5px 26px 4px var(--cl-shadow--ambient);
+  --cl-shadow--15: 0 8px 9px -5px var(--cl-shadow--umbra),
+                  0 15px 22px 2px var(--cl-shadow--penumbra),
+                  0 6px 28px 5px var(--cl-shadow--ambient);
+  --cl-shadow--16: 0 8px 10px -5px var(--cl-shadow--umbra),
+                  0 16px 24px 2px var(--cl-shadow--penumbra),
+                  0 6px 30px 5px var(--cl-shadow--ambient);
+  --cl-shadow--17: 0 8px 11px -5px var(--cl-shadow--umbra),
+                  0 17px 26px 2px var(--cl-shadow--penumbra),
+                  0 6px 32px 5px var(--cl-shadow--ambient);
+  --cl-shadow--18: 0 9px 11px -5px var(--cl-shadow--umbra),
+                  0 18px 28px 2px var(--cl-shadow--penumbra),
+                  0 7px 34px 6px var(--cl-shadow--ambient);
+  --cl-shadow--19: 0 9px 12px -6px var(--cl-shadow--umbra),
+                  0 19px 29px 2px var(--cl-shadow--penumbra),
+                  0 7px 36px 6px var(--cl-shadow--ambient);
+  --cl-shadow--20: 0 10px 13px -6px var(--cl-shadow--umbra),
+                  0 20px 31px 3px var(--cl-shadow--penumbra),
+                  0 8px 38px 7px var(--cl-shadow--ambient);
+  --cl-shadow--21: 0 10px 13px -6px var(--cl-shadow--umbra),
+                  0 21px 33px 3px var(--cl-shadow--penumbra),
+                  0 8px 40px 7px var(--cl-shadow--ambient);
+  --cl-shadow--22: 0 10px 14px -6px var(--cl-shadow--umbra),
+                  0 22px 35px 3px var(--cl-shadow--penumbra),
+                  0 8px 42px 7px var(--cl-shadow--ambient);
+  --cl-shadow--23: 0 11px 14px -7px var(--cl-shadow--umbra),
+                  0 23px 36px 3px var(--cl-shadow--penumbra),
+                  0 9px 44px 8px var(--cl-shadow--ambient);
+  --cl-shadow--24: 0 11px 15px -7px var(--cl-shadow--umbra),
+                  0 24px 38px 3px var(--cl-shadow--penumbra),
+                  0 9px 46px 8px var(--cl-shadow--ambient);
+  
+  /* Z-Index */
+  --cl-z-index--modal: 1;
+
+  /* Transition */
+  --cl-transition-duration: 300ms;
+  --cl-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --cl-transition-delay: 0ms;
+  --cl-transition: var(--cl-transition-duration) var(--cl-transition-timing-function) var(--cl-transition-delay);
+
+  /* ClPopper */
+  --cl-popper__arrow--size: var(--cl-space--sm);
+}
+
+body {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--cl-font-family);
+}
