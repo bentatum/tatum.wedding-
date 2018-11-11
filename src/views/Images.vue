@@ -222,8 +222,7 @@ export default class Images extends Vue {
     const sm = 320
     const md = 768
     const lg = 1024
-    const xl = 1440
-    const w = document.documentElement.clientWidth
+    const w = document!.documentElement!.clientWidth
     if (w <= md) {
       return sm
     } else if (w > md && w <= lg) {
